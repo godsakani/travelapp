@@ -1,0 +1,37 @@
+{% extends 'base.html'%}
+{% block content %}
+  <nav class="navbar navbar-light bg-light justify-content-between">
+  <a class="navbar-brand">Welcome Admin</a>
+  <a href="/adminorders/" class="nav-items" style="text-decoration:none; color:black">All Reservation</a>
+  <!--<form class="form-inline">
+    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+  </form>-->
+  <a class="Btn btn-danger" style="margin:4px;padding:4px;border-radius:5px;" href="/adminlogout/">Logout</a>
+</nav>
+
+<form method="post" action="/addbus/">
+    {% csrf_token %}
+    <div class="container" style="width:530px;display:block;margin:auto;">
+   <input type="text" class="form-control" name="Bus" style="width:200px;display:inline;margin:auto;" placeholder="Bus Type">
+   <input type="text" class="form-control" name="price" style="width:200px;display:inline;margin:auto;" placeholder="Price">
+   <input type="submit" value="Add Bus" name="" class="btn btn-success" style="display:inline;">
+   </div>
+</form>
+<div class="container" style="width:530px; display: block; margin: auto; margin-top: 85px">
+<table class="table" style="width: 70%">
+        <tr>
+            <th>Bus Type</th>
+            <th>Price</th>
+            <th>Delete</th>
+        </tr>
+        {% for bus in buses%}
+        <tr>
+            <td>{{bus.name}}</td>
+            <td>{{bus.price}}</td>
+            <td><a href="/deletebus/{{bus.id}}/" class="btn btn-danger">Delete</a></td>
+        </tr>
+        {% endfor %}
+</table>
+</div>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block content %}
+<div class="container-fluid" style="position: absolute;height: 666px;background-size: cover;background-image: url({%static "img/car2.jpg" %});">
+<div class="container" style="width: 400px;height: 250px;background-color: #497496;margin-top: 200px;padding: 30px">
+	<h1 style="color: white;text-align: center;">Login</h1>
+<form method="post" action="/customer/authenticate/">
+	 {% csrf_token %}
+	<input type="text" class="form-control" name="username" placeholder="username" style="margin-bottom: 10px">
+<input type="password" class="form-control" name="password" placeholder="password" style="margin-bottom: 10px">
+<input type="submit" class="btn btn-success" style="display: block;margin: auto" name="">
+</form>
+{% for message in messages %}
+	<p style="text-align: center">{{message}}</p>
+</div>
+{% endfor %}
+
+</div>
+{% endblock%}

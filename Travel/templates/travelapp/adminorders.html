@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1 style="text-align:center">My Reservation</h1>
+{% for order in orders%}
+<div  style="margin:45px;"class="alert alert-warning" role="alert">
+<p style="text-align:center;">{{order.username}}</p>
+<p style="text-align:center;">{{order.phoneno}}</p>
+<p style="text-align:center;">{{order.address}}</p>
+<p style="text-align:center;">{{order.prdereditems}}</p>
+<p style="text-align:center;">order status : {{order.status}}</p>
+<div class="contain" style ="width:180px; margin: auto">
+<a href="/acceptorder/{{order.id}}/" class="btn btn-success" style="display: inline;">aceept</a>
+<a href="/declineorder/{{order.id}}" class="btn btn-danger" style="display: inline;">decline</a>
+</div>
+</div>
+{% endfor%}
+{% endblock %}
